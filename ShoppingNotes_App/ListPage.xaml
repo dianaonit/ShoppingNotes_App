@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShoppingNotes_App.ListPage">
+    <ContentPage.Content xmlns:local="clr-namespace:ShoppingNotes_App">
+        <ScrollView>
+            <StackLayout Margin="20">
+                <Editor Placeholder="Enter the title of the shopping list" Text="{Binding Name}" HeightRequest="80">
+                    <Editor.Behaviors>
+                        <local:ValidationBehaviour />
+                    </Editor.Behaviors>
+                </Editor>
+
+                <Editor Placeholder="Enter the description of the shopping list" Text="{Binding Description}" HeightRequest="80">
+                    <Editor.Behaviors>
+                        <local:ValidationBehaviour />
+                    </Editor.Behaviors>
+                </Editor>
+
+
+                <Button Text="Add/Choose Item to buy" Clicked="OnChooseButtonClicked" BackgroundColor="#67B5C4" TextColor="White" IsEnabled="{Binding Exists}"/>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Text="Save" Clicked="OnSaveButtonClicked" BackgroundColor="#BAE0A4" TextColor="White" />
+                    <Button Grid.Column="1" Text="Delete Product " Clicked="OnDeleteButtonClicked"  BackgroundColor="#EF7564" TextColor="White" IsEnabled="{Binding Exists}" />
+                </Grid>
+
+                <ListView x:Name="listView" ItemSelected="OnListViewItemSelected" VerticalScrollBarVisibility="Always"  VerticalOptions="FillAndExpand">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Detail="{Binding Description}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+                
+
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

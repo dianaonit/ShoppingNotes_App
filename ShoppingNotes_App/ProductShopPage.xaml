@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShoppingNotes_App.ProductShopPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <FlexLayout
+            AlignItems="Start"
+            AlignContent="Start"                   
+            Wrap="Wrap">
+                
+
+                <Label Text="{Binding Name}" HorizontalTextAlignment="Center" TextColor="#50555C" FontAttributes="Bold" FontSize="Large" Margin="10, 10" />
+                <BoxView FlexLayout.Basis="100%" HeightRequest="0" />
+
+                <Label Text="Description" FontAttributes="Bold" FontSize="Medium" TextColor="#67B5C4"  Margin="10,10" HorizontalOptions="FillAndExpand" />
+                <BoxView FlexLayout.Basis="100%" HeightRequest="0" />
+                
+                <Label Text="{Binding Description}" Margin="10,10" FontSize="Small" />
+                <BoxView FlexLayout.Basis="100%" HeightRequest="0" />
+
+                <Label Text="Products" FontAttributes="Bold" FontSize="Medium" TextColor="#67B5C4"  Margin="10,10" HorizontalOptions="FillAndExpand" />
+                <BoxView FlexLayout.Basis="100%" HeightRequest="0" />
+                <ListView Grid.Row="1" x:Name="listView" Margin="20" IsEnabled="false">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Description}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <BoxView FlexLayout.Basis="100%" HeightRequest="0" />
+
+            </FlexLayout>
+        </ScrollView>
+    </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Delete" Clicked="Delete_Clicked" />
+        <ToolbarItem Text="Edit" Clicked="Edit_Clicked" />
+    </ContentPage.ToolbarItems>
+    
+</ContentPage>
